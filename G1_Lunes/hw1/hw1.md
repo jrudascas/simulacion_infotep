@@ -19,3 +19,5 @@ simular: Esta función deberá recibir como parametro una velocidad y una direcc
 5. Con sus resultados cree un reporte en formato Latex utilizando su cuenta de OverLeaf basado en la plantilla de refencia utilizada en el curso. Deberá completar minimo las siguientes secciones del formato (titulo, autores, resumen, introducción, objetivos de la actividad, descripción de la actividad y/o documentación de codigo, graficas de resultados, analisis de cada grafica, su interpretación y sus conclusiones).
 
 6. El entregable será por tanto un PR al repositorio de GitHub del curso antes de la hora de inicio de la sesion # 3. Este PR deberá contener los siguientes archivos: integrantes.md (Lista de integrantes del grupo), script.ipynb (Jupyter Notebook con su implementación), informe.pdf (informe compilado en pdf desde el Latex) y informe.zip (Latex crudo). No se aceptan entregables parciales.
+
+7. Fecha limite de entrega: Lunes 03 de Marzo a las 17:00 GMT-5
