@@ -43,7 +43,7 @@ NOTA: Estos tutoriales son solo una guía. El manejo de herramientas hace parte 
 ## Lecturas sugeridas
 
 - [Lectura sugerida # 1 - Buenas practicas en el uso de libros de Jupyter Notebooks](https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1007007&type=printable)
-
+- [Impacto de la IA Generativa en el pensamiento critico](https://drive.google.com/file/d/1w20STqksV6vM4cs3-SnHdftBfOeGqd9G/view?usp=sharing)
 
 ## Plantilla de informes
 
