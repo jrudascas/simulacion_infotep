@@ -1,5 +1,5 @@
 # Integrantes
 
 - Luis Correa
-- Mailyn Silva
+- Maily Silva
 - Valeria Marquez
