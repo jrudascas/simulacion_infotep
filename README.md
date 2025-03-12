@@ -40,6 +40,14 @@ NOTA: Estos tutoriales son solo una guía. El manejo de herramientas hace parte 
 ```
 
 
+## Guias del curso
+- [Simulación de sistemas Robóticos](https://repositorio.uti.edu.ec/bitstream/123456789/6908/2/Libro%20SIMULACI%C3%93N%20DE%20SISTEMAS%20ROB%C3%93TICOS.pdf)
+- [Algebra Vectorial](https://www.youtube.com/watch?v=PquPODE1UBc&pp=ygUXb3BlcmFjaW9uZXMgdmVjdG9yaWFsZXM%3D)
+- [Algebra Matricial](https://www.youtube.com/watch?v=RJ96S2Pt3qU&list=PLeySRPnY35dEr2XewNdOjOl7Ft0tLIlKI)
+- [Arreglos en Python](https://www.youtube.com/watch?v=97o5ckUHDmo)
+- [Curso de Numpy - I](https://www.youtube.com/watch?v=cYm3DBG6KfI)
+- [Curso de Numpy - II](https://www.youtube.com/watch?v=G8t7gMgY5JM&list=PLg9145ptuAij_8zYgMeqwOV8ABwRYLuR3)
+
 ## Lecturas sugeridas
 
 - [Lectura sugerida # 1 - Buenas practicas en el uso de libros de Jupyter Notebooks](https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1007007&type=printable)
