@@ -1,0 +1,136 @@
+\title{Informe sobre la Actividad de Simulación en Python: Clase}
+\author{ELIMELEC RUIZ QUINTERO, LEISER ANGARITA MELENDREZ, ALDAIR SIERRA FONTALVO}
+
+\maketitle
+
+\begin{abstract}
+  Presentamos el desarrollo de una actividad en la que se creó una clase en Python mediante Jupyter Notebook. La clase representa una escena 2D con un fondo circular y un punto superpuesto. Incluye funciones para modificar y simular el movimiento de los puntos en la escena. Se explican las funciones desarrolladas, los objetivos de la actividad, y se analizan los resultados obtenidos.
+\end{abstract}
+
+\section{Introducción}
+La finalidad de este ejercicio es desarrollar una clase en Python que interfiera con el movimiento de un punto en una circunferencia en un plano 2D. La clase, llamada \texttt{Escena}, cuenta con una serie de métodos para modificar las propiedades del punto y realizar operaciones geométricas, tales como desplazamiento, escalado, rotación, y cálculo de la norma y producto interno.
+
+La implementación se llevó a cabo en el entorno de desarrollo Jupyter Notebook, que permite la ejecución del código Python en bloques interactivos con la capacidad para visualizar de manera dinámica la simulación. Por medio de esta actividad, se pretende aplicar y comprender los aspectos de las transformaciones geométricas y las animaciones en un contexto computacional.
+
+A lo largo del informe se detalla la implementación de la clase \texttt{Escena}, las funciones que la componen, y cómo se simula el movimiento del punto en órbita circular. Por último, se realiza un análisis de los resultados obtenidos en la simulación.
+
+\section{Desarrollo}
+La clase \texttt{Escena} se desarrolló con el propósito de representar gráficamente una escena en 2D con una circunferencia y un punto superpuesto que puede desplazarse a lo largo de la circunferencia. A continuación, se presentan las propiedades y los métodos utilizados en la clase.
+
+\subsection{Propiedades}
+La clase tiene las siguientes propiedades inicializadas a través del constructor:
+
+\begin{itemize}
+\item \textbf{centro\_circulo}: Coordenadas del centro de la circunferencia.
+\item \textbf{radio\_circulo}: Radio de la circunferencia.
+\item \textbf{color\_circulo}: Color de la circunferencia.
+\item \textbf{punto}: Coordenadas del punto que se desplaza sobre la circunferencia.
+\item \textbf{fig, ax}: Objetos de \texttt{matplotlib} para crear la figura y los ejes de la gráfica.
+\item \textbf{circulo}: Objeto \texttt{matplotlib} que representa la circunferencia.
+\item \textbf{punto\_plot}: Objeto de \texttt{matplotlib} que representa el punto en la gráfica.
+\end{itemize}
+
+\subsection{Métodos Implementados}
+La clase \texttt{Escena} cuenta con los siguientes métodos:
+
+\begin{itemize}
+\item \textbf{Constructor \texttt{__init__()}}: Carga las características de la clase, crea la figura y los ejes del gráfico, y dibuja la escena inicial. Es el primer método que se llama al instanciar un objeto de la clase \texttt{Escena}.
+\item \textbf{dibujar\_escena()}: Dibuja el punto en su posición actual en el círculo. Este método se llama después de realizar cualquier cambio en la posición del punto.
+\item \textbf{desplazar(vector)}: Desplaza el punto a lo largo de un vector proporcionado. Este método modifica las coordenadas del punto sumando las componentes del vector dado.
+\item \textbf{escalar(factor)}: Escala la posición del punto respecto al origen. Multiplica las coordenadas del punto por un factor específico, lo que cambia su distancia respecto al origen.
+\item \textbf{norma()}: Devuelve la norma (módulo) del vector que representa la posición del punto. La norma es simplemente la distancia entre el punto y el origen en el plano 2D.
+\item \textbf{producto\_interno(otro\_vector)}: Calcula el producto interno entre el vector de posición del punto y otro vector proporcionado. Este cálculo se utiliza en diversos ámbitos geométricos y algebraicos.
+\item \textbf{rotar(angulo)}: Rota el punto en un ángulo dado alrededor del origen (en grados). Este procedimiento realiza una rotación geométrica utilizando la matriz de rotación estándar en 2D.
+\item \textbf{actualizar(frame)}: Simula el movimiento del punto en la circunferencia, actualizando su posición en cada fotograma. Se invoca este método en cada fotograma de la animación.
+\item \textbf{simular()}: Llama al método de animación \texttt{FuncAnimation} de \texttt{matplotlib} para simular el movimiento del punto en una órbita circular. Este método forma la animación completa.
+\end{itemize}
+
+\subsection{Implementación en Python}
+La implementación de la clase \texttt{Escena} en Python utiliza la librería \texttt{matplotlib} para la visualización gráfica y animación, y la librería \texttt{numpy} para el cálculo numérico. A continuación, se presenta el código completo de la clase:
+
+\begin{lstlisting}[language=Python]
+import matplotlib.pyplot as plt
+import numpy as np
+from matplotlib.animation import FuncAnimation
+
+class Escena:
+    def __init__(self, centro_circulo, radio_circulo, color_circulo, punto_x, punto_y):
+        self.centro_circulo = np.array(centro_circulo)
+        self.radio_circulo = radio_circulo
+        self.color_circulo = color_circulo
+        self.punto = np.array([punto_x, punto_y])
+
+        # Crear la figura y los ejes
+        self.fig, self.ax = plt.subplots()
+        self.circulo = plt.Circle(self.centro_circulo, self.radio_circulo, color=self.color_circulo, fill=False)
+        self.ax.add_patch(self.circulo)
+        self.punto_plot, = self.ax.plot([], [], 'ro') # Punto rojo
+
+        # Definir los límites de los ejes
+        self.ax.set_xlim([self.centro_circulo[0] - self.radio_circulo - 1, self.centro_circulo[0] + self.radio_circulo + 1])
+        self.ax.set_ylim([self.centro_circulo[1] - self.radio_circulo - 1, self.centro_circulo[1] + self.radio_circulo + 1])
+        self.ax.set_aspect('equal')
+
+        # Dibujar la escena inicialmente
+        self.dibujar_escena()
+
+    def dibujar_escena(self):
+        """ Dibuja el punto en su posición actual. """
+        self.punto_plot.set_data([self.punto[0]], [self.punto[1]])
+
+    def desplazar(self, vector):
+        """ Desplaza el punto por un vector dado. """
+        self.punto += np.array(vector)
+
+    def escalar(self, factor):
+        """ Escala la posición del punto respecto al origen. """
+        self.punto *= factor
+
+    def norma(self):
+        """ Devuelve la norma del vector posición del punto. """
+        return np.linalg.norm(self.punto)
+
+    def producto_interno(self, otro_vector):
+        """ Calcula el producto interno con otro vector. """
+        return np.dot(self.punto, np.array(otro_vector))
+
+    def rotar(self, angulo):
+        """ Rota el punto alrededor del origen en un ángulo dado (grados). """
+        angulo_rad = np.radians(angulo)
+        matriz_rotacion = np.array([[np.cos(angulo_rad), -np.sin(angulo_rad)],
+                                    [np.sin(angulo_rad), np.cos(angulo_rad)]])
+        self.punto = matriz_rotacion @ self.punto # Producto matricial
+
+    def actualizar(self, frame):
+        """ Simula el movimiento del punto en una órbita circular. """
+        angulo = np.radians(frame) # Convertir el fotograma en un ángulo
+        self.punto[0] = self.centro_circulo[0] + self.radio_circulo * np.cos(angulo)
+        self.punto[1] = self.centro_circulo[1] + self.radio_circulo * np.sin(angulo)
+        self.dibujar_escena()
+        return self.punto_plot,
+
+    def simular(self):
+        ani = FuncAnimation(self.fig, self.actualizar, frames=np.arange(0, 360, 5), interval=50)
+        plt.show()
+\end{lstlisting}
+
+\section{Resultados}
+Tras la declaración de la clase \texttt{Escena}, se probaron varias de las funciones disponibles, incluyendo el cálculo de la norma, el desplazamiento, el escalado, el producto interno y la rotación del punto. Los resultados obtenidos fueron los siguientes:
+
+\begin{itemize}
+\item La norma del punto original es aproximadamente 3.
+\item El punto se desplazó correctamente al sumar el vector \([1, 1]\), y su nueva posición fue calculada correctamente.
+\item La posición del punto se escaló adecuadamente por un factor de 2, alterando su ubicación.
+\item El producto interno con el vector \([1, 1]\) calculó el valor esperado.
+\item La rotación del punto en 45 grados también dio la posición deseada.
+\end{itemize}
+
+Finalmente, la simulación creó el movimiento del punto alrededor de la circunferencia mediante una animación suave, mostrando correctamente el movimiento. Esto confirmó el correcto funcionamiento de la clase y los métodos.
+
+\section{Conclusiones}
+La implementación de la clase \texttt{Escena} en Python se realizó con éxito. Se logró simular el desplazamiento de un punto sobre una circunferencia y realizar diferentes operaciones geométricas como desplazamiento, escalamiento, rotación y cálculo de la norma y del producto interno. La animación de la simulación demostró que el movimiento del punto es correcto, lo que avala que los métodos de actualización se están utilizando adecuadamente.
+
+Este ejercicio permitió aplicar conceptos de geometría y programación en Python, mientras que también ofreció una visualización clara del comportamiento de las transformaciones geométricas.
+
+
+\end{documento}
