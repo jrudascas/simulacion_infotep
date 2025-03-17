@@ -1,0 +1,100 @@
+\documentclass[a4paper, 10pt]{article}
+\hyphenpenalty=8000
+\textwidth=125mm
+\textheight=185mm
+
+\usepackage{graphicx}
+\usepackage{alltt}
+\usepackage{amsmath}
+\usepackage[hidelinks, pdftex]{hyperref}
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{\texttt{https://doi.org/#1}}}
+
+\begin{document}
+
+\begin{center}
+Nonlinear Analysis: Modelling and Control, Vol. vv, No. nn, YYYY\\
+\copyright\ Vilnius University\\[24pt]
+\LARGE
+\textbf{Operations Vectoriales en la Clase `Escena` para Manipulación y Análisis de Puntos en un Espacio 2D}\footnote{Este trabajo fue apoyado por el grant No.\ xxxx.}\\[6pt]
+\small
+\textbf{Nelson Martinez, Alexdith Ariza}\\[6pt]
+Institución de los autores, dirección\\
+\href{mailto:author@somewhere.host}{author@somewhere.host}\\[6pt]
+Recibido: fecha\quad/\quad
+Revisado: fecha\quad/\quad
+Publicado online: fecha
+\end{center}
+
+\begin{abstract}
+Este trabajo presenta una implementación en Python de una clase `Escena` que modela un espacio 2D con un fondo y un punto. La clase permite realizar varias operaciones vectoriales, como el desplazamiento y la rotación de puntos, así como el cálculo del producto escalar y la norma vectorial. Estas operaciones se ilustran a través de tres ejemplos de escenas, donde se realizan transformaciones sobre los puntos en un entorno visual. Este enfoque permite estudiar y manipular puntos en un espacio 2D de forma sencilla y eficiente.
+\vskip 2mm
+
+\textbf{Palabras clave:} operaciones vectoriales, rotación, desplazamiento, norma, producto escalar.
+\end{abstract}
+
+\nocite{2009ProcDETAp}
+
+\section{Introducción}\label{s:1}
+En este trabajo se presenta una implementación de una clase en Python, denominada `Escena`, que permite modelar un espacio 2D con un fondo y un punto. La clase facilita la realización de diversas operaciones vectoriales como el desplazamiento y la rotación de puntos, así como el cálculo de la norma y el producto escalar. Estas herramientas pueden ser útiles en el contexto de análisis matemático, simulaciones de sistemas dinámicos o incluso en el campo de la visualización científica.
+
+\section{Ejemplos de ecuaciones, algoritmos y figuras}\label{s:2}
+A continuación se presenta la implementación de las ecuaciones y algoritmos que permiten realizar las operaciones vectoriales sobre el punto de la escena:
+
+\subsection{Expresiones matemáticas complejas}\label{s:2.1}
+Como ejemplo de cómo se presentan las operaciones matemáticas en este trabajo, consideremos la rotación y el desplazamiento de un punto en el espacio 2D:
+
+\begin{equation}\label{eq:1}
+   \dot{X}=F(X),\qquad \dot{Y}=G(Y,X),
+\end{equation}
+donde \(X \equiv \{x_1, x_2, \dots, x_d\}\) es el vector de estado del sistema que actúa como el "driver", y \(Y \equiv \{y_1, y_2, \dots, y_r\}\) es el vector de estado del sistema respondedor.
+
+\subsection{Operaciones vectoriales sobre puntos}\label{s:2.2}
+El siguiente fragmento muestra cómo se realizan las operaciones de desplazamiento y rotación sobre el punto en la clase `Escena`:
+
+{\small
+\begin{alltt}
+# Desplazar el punto
+escena1.desplazar_punto(np.array([2, 3]))
+
+# Rotar el punto 20 grados
+escena2.rotar_punto(20)
+\end{alltt}}
+
+\subsection{Ejemplo visual de una figura}\label{s:2.3}
+El siguiente gráfico ilustra el resultado de aplicar las transformaciones a los puntos en las diferentes escenas. Se muestra cómo un punto se mueve a través de un fondo de diferentes colores, y cómo las operaciones de rotación y desplazamiento afectan a su posición.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=5.8cm]{1_2.pdf}\quad
+\includegraphics[width=5.8cm]{1_1.pdf}
+\caption{Resultados de las transformaciones sobre los puntos en las escenas.}\label{fig:1}
+\end{figure}
+
+\paragraph{Contribuciones de los autores.} Todos los autores (Nelson Martinez y Alexdith Ariza) han contribuido de la siguiente manera: metodología, Nelson Martinez; análisis formal, Nelson Martinez y Alexdith Ariza; software, Alexdith Ariza; validación, Alexdith Ariza; redacción – preparación del borrador original, Nelson Martinez y Alexdith Ariza; redacción – revisión y edición, Nelson Martinez y Alexdith Ariza. Todos los autores han leído y aprobado la versión final del manuscrito.
+
+\paragraph{Conflictos de interés.} Los autores declaran que no existen conflictos de interés.
+
+\paragraph{Agradecimientos.} Queremos agradecer al Dr. N. Sergejeva por los fragmentos del artículo \cite{2014SergejevaN}.
+
+\bibliographystyle{NAplain}
+\bibliography{sample}
+
+\end{document}
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{simulacion}
+\author{alexdith ariza }
+\date{March 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+\end{document}
