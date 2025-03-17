@@ -1,0 +1,130 @@
+\documentclass[a4paper, 10pt]{article}
+\hyphenpenalty=8000
+\textwidth=125mm
+\textheight=185mm
+
+\usepackage{graphicx}
+\usepackage{alltt}
+\usepackage{amsmath}
+\usepackage[hidelinks, pdftex]{hyperref}
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\begin{document}
+
+\begin{center}
+\LARGE
+\textbf{Documentación del Código de Simulación de Escena}\[]
+\small
+\textbf{ROBBYEL ELIAS, CARLOS JERONIMO, ANDRUS LOPEZ}\[]
+\end{center}
+
+\begin{abstract}
+Este documento describe la implementación de una simulación de escena en Python utilizando clases y animaciones. Se explican los métodos principales y sus funcionalidades, incluyendo la generación de escenas con rectángulos y puntos, su modificación, desplazamiento y animación.
+\end{abstract}
+
+\section{Introducción}
+Este documento presenta la documentación detallada del código de simulación de escena. La simulación consiste en la representación gráfica de un área rectangular con puntos aleatorios y su animación mediante desplazamientos en distintas direcciones.
+
+\section{Descripción del Código}
+
+El código está estructurado en una clase llamada \texttt{Escena}, que encapsula todas las funcionalidades necesarias para manejar y modificar una representación gráfica.
+
+\subsection{Inicialización de la Escena}
+El constructor de la clase \texttt{Escena} inicializa los parámetros básicos:
+\begin{itemize}
+    \item \texttt{ancho}, \texttt{alto}: dimensiones del área rectangular.
+    \item \texttt{color}: color del rectángulo de fondo.
+    \item \texttt{n\_puntos}: cantidad de puntos generados aleatoriamente.
+\end{itemize}
+
+\subsection{Método para Dibujar la Escena}
+El método \texttt{dibujar\_escena} representa gráficamente el rectángulo y los puntos generados. Se usa la librería \texttt{matplotlib} para trazar el rectángulo y los puntos dentro de la escena.
+
+\subsection{Desplazamiento de Puntos}
+El método \texttt{desplazar\_puntos(valor, direccion)} permite mover los puntos en diferentes direcciones:\\
+\textbf{Parámetros:}
+\begin{itemize}
+    \item \texttt{valor}: cantidad de desplazamiento.
+    \item \texttt{direccion}: dirección del movimiento (\texttt{'derecha'}, \texttt{'izquierda'}, \texttt{'arriba'}, \texttt{'abajo'}).
+\end{itemize}
+
+\subsection{Animación de la Escena}
+El método \texttt{animar(velocidad, direccion)} genera una animación de los puntos desplazándose en la dirección especificada. Se usa la función \texttt{FuncAnimation} de \texttt{matplotlib.animation}.
+
+\section{Código Fuente}
+
+\begin{alltt}
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+import matplotlib.animation as animation
+from IPython.display import HTML, display
+
+class Escena:
+    def _init_(self, ancho, alto, color, n_puntos):
+        self.ancho = ancho
+        self.alto = alto
+        self.color = color
+        self.puntos = np.random.rand(n_puntos, 2) * [ancho, alto]
+
+    def cambiar_escena(self, ancho, alto, color, n_puntos):
+        self._init_(ancho, alto, color, n_puntos)
+
+    def dibujar_escena(self):
+        fig, ax = plt.subplots()
+        ax.set_xlim(0, self.ancho)
+        ax.set_ylim(0, self.alto)
+        rect = patches.Rectangle((0, 0), self.ancho, self.alto, color=self.color)
+        ax.add_patch(rect)
+        ax.scatter(self.puntos[:, 0], self.puntos[:, 1], color='red', label='Puntos')
+        ax.legend()
+        plt.show()
+
+    def desplazar_puntos(self, valor, direccion):
+        desplazamientos = {
+            'derecha': np.array([valor, 0]),
+            'izquierda': np.array([-valor, 0]),
+            'arriba': np.array([0, valor]),
+            'abajo': np.array([0, -valor])
+        }
+        if direccion in desplazamientos:
+            self.puntos += desplazamientos[direccion]
+
+    def animar(self, velocidad, direccion):
+        fig, ax = plt.subplots()
+        ax.set_xlim(0, self.ancho)
+        ax.set_ylim(0, self.alto)
+        rect = patches.Rectangle((0, 0), self.ancho, self.alto, color=self.color)
+        ax.add_patch(rect)
+        scatter = ax.scatter(self.puntos[:, 0], self.puntos[:, 1], color='red')
+
+        desplazamiento = {
+            'derecha': np.array([velocidad, 0]),
+            'izquierda': np.array([-velocidad, 0]),
+            'arriba': np.array([0, velocidad]),
+            'abajo': np.array([0, -velocidad])
+        }.get(direccion, np.array([0, 0]))
+
+        def update(frame):
+            self.puntos[:] += desplazamiento
+            scatter.set_offsets(self.puntos)
+            return scatter,
+
+        ani = animation.FuncAnimation(fig, update, frames=20, interval=100, blit=True)
+        return HTML(ani.to_jshtml())
+
+if _name_ == "_main_":
+    escena = Escena(10, 5, 'blue', 10)
+    escena.dibujar_escena()
+    escena.desplazar_puntos(1, 'derecha')
+    escena.dibujar_escena()
+    display(escena.animar(0.5, 'arriba'))
+\end{alltt}
+
+\section{Conclusiones}
+Se presentó un código en Python para simular una escena gráfica con puntos en movimiento. Se explicaron las funciones principales y su implementación, proporcionando una visión clara del proceso de desarrollo.
+
+\end{document}
