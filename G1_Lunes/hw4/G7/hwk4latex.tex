@@ -1,0 +1,85 @@
+\documentclass[a4paper, 10pt]{article}
+\hyphenpenalty=8000
+\textwidth=125mm
+\textheight=185mm
+
+\usepackage{graphicx}
+\usepackage{alltt}
+\usepackage{amsmath}
+\usepackage[hidelinks, pdftex]{hyperref}
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{\texttt{https://doi.org/#1}}}
+
+\begin{document}
+
+\begin{center}
+
+\LARGE
+\textbf{Implementación de Transformaciones en 3D utilizando Matrices de Rotación y Desplazamientos}\\[6pt]
+\small
+\textbf {Alan Miranda, Marlon Caviedes, Cristian Orozco}\\[6pt]
+
+\end{center}
+
+\begin{abstract}
+Este documento presenta la implementación de transformaciones en 3D aplicadas a rotaciones y desplazamientos, utilizando matrices de rotación y operaciones vectoriales, tal como se ha trabajado en clase. Se describen las funciones de rotación masiva, desplazamiento masivo y la combinación de ambas en transformaciones secuenciales. Se presentan resultados experimentales mediante gráficos, análisis de la no conmutatividad de las rotaciones y la conmutatividad de los desplazamientos, así como una interpretación de los resultados obtenidos. 
+\end{abstract}
+
+\section{Introducción}
+En simulaciones y robótica es fundamental comprender el comportamiento de las transformaciones en el espacio. En particular, las operaciones de rotación y desplazamiento se utilizan para modelar movimientos en sistemas tridimensionales. En este trabajo se emplea el método basado en matrices de rotación y sumas vectoriales, tal como se ha desarrollado en el curso, para implementar funciones de rotación masiva, desplazamiento masivo y su combinación en transformaciones secuenciales.
+
+\section{Objetivos de la Actividad}
+El propósito principal de esta actividad es:
+\begin{itemize}
+    \item Evaluar la capacidad de abstracción en operaciones vectoriales y matriciales utilizando Python.
+    \item Comprender y aplicar el uso de operadores algebraicos para modelar desplazamientos y rotaciones en un entorno tridimensional.
+    \item Implementar funciones que permitan realizar secuencias de rotaciones y desplazamientos, y analizar la conmutatividad en estas operaciones.
+\end{itemize}
+
+\section{Descripción de la Actividad y Documentación del Código}
+Para resolver la actividad se implementaron las siguientes funciones:
+\begin{itemize}
+    \item \textbf{matriz\_rotacion(eje, angulo):} Genera la matriz 3$\times$3 de rotación sobre el eje especificado (x, y o z) para un ángulo dado en grados.
+    \item \textbf{rotacion\_masiva(vector\_rotaciones):} Recibe un vector de tuplas (ángulo, eje) y compone secuencialmente las matrices de rotación.
+    \item \textbf{desplazamiento\_masivo(vector\_desplazamientos):} Suma secuencialmente vectores de desplazamiento (dx, dy, dz).
+    \item \textbf{Transformacion3D:} Clase que encapsula una transformación en 3D mediante una matriz de rotación 3$\times$3 y un vector de desplazamiento, permitiendo aplicar la transformación a puntos en el espacio.
+    \item \textbf{transformaciones\_masivas(operaciones, punto\_inicial):} Función que aplica una secuencia de operaciones (rotación o desplazamiento) a un punto, respetando el orden de ejecución.
+\end{itemize}
+
+
+\section{Gráficas de Resultados y Análisis}
+Se realizaron varios experimentos para evaluar el comportamiento de las funciones implementadas. A continuación se presenta un ejemplo de gráfico y su análisis.
+
+\subsection{Rotación Masiva}
+Se aplica una rotación de 45\textdegree~sobre el eje \textit{x} y 30\textdegree~sobre el eje \textit{y} a un punto inicial $P = (1, 0, 0)$. El resultado se obtiene mediante la composición de las matrices de rotación.
+
+\textbf{Análisis:}  
+ Se evidencia la no conmutatividad en las rotaciones, puesto que cambiar el orden de aplicación de las rotaciones produce un resultado diferente.
+
+\subsection{Desplazamiento Masivo}
+Se aplica un desplazamiento de $(2, 3, 1)$ unidades al mismo punto inicial. El resultado es la suma vectorial de los desplazamientos.
+
+
+\textbf{Análisis:}  
+Al tratarse de sumas vectoriales, el orden en el que se aplican los desplazamientos no afecta el resultado final, confirmando la propiedad conmutativa de esta operación.
+
+\subsection{Transformación Masiva Combinada}
+Finalmente, se combinan ambas operaciones en secuencia: rotación de 45\textdegree~sobre el eje \textit{x}, desplazamiento $(2,3,1)$ y rotación de 30\textdegree~sobre el eje \textit{y}.
+
+\textbf{Análisis:}  
+Se evidencia el impacto de la secuencia de operaciones. La transformación combinada demuestra cómo cada operación afecta al punto de manera acumulativa, resaltando la importancia del orden de ejecución. En particular, se observa que la rotación final se aplica sobre un punto ya desplazado y previamente rotado, lo cual es clave para entender la interacción entre ambas operaciones.
+
+\section{Conclusiones}
+La implementación de las funciones de rotación y desplazamiento utilizando matrices y operaciones vectoriales ha permitido:
+\begin{itemize}
+    \item Modelar de forma sencilla y efectiva las transformaciones en 3D sin recurrir a conceptos avanzados (como matrices homogéneas).
+    \item Evidenciar la no conmutatividad de las rotaciones, lo cual es crucial para aplicaciones en simulación y robótica.
+    \item Confirmar la conmutatividad de los desplazamientos al sumarlos vectorialmente.
+    \item Integrar ambas operaciones en una transformación secuencial que permite analizar y predecir el comportamiento de un punto en el espacio.
+\end{itemize}
+
+
+\end{document}
