@@ -1,0 +1,86 @@
+\documentclass[a4paper, 10pt]{article}
+\hyphenpenalty=8000
+\textwidth=125mm
+\textheight=185mm
+
+\usepackage{graphicx}
+\usepackage{alltt}
+\usepackage{amsmath}
+\usepackage[hidelinks, pdftex]{hyperref}
+
+\begin{document}
+
+\begin{center}
+\LARGE
+\textbf{Transformaciones Geométricas en una Escena 2D}\footnote{Este trabajo fue desarrollado como parte de un proyecto de aprendizaje.}\\[6pt]
+\small
+\textbf{Robbyel Elias, Carlos Jerónimo}\\[6pt]
+INFOTEP\\[6pt]
+\end{center}
+
+\begin{abstract}
+Este documento presenta la implementación de una clase en Python denominada Escena, la cual permite realizar transformaciones geométricas sobre un círculo y un par de puntos representando ojos. Se detallan los métodos para escalar, trasladar y rotar estos elementos, así como su representación gráfica mediante la biblioteca Matplotlib. La implementación facilita la exploración de transformaciones geométricas de manera interactiva.
+
+\textbf{Palabras clave:} Transformaciones geométricas, rotación, escalado, traslación, Python, Matplotlib.
+\end{abstract}
+
+\section{Introducción}
+El estudio de las transformaciones geométricas es fundamental en diversas aplicaciones, desde el diseño gráfico hasta la simulación física. En este documento, presentamos una implementación en Python que permite visualizar y manipular elementos geométricos básicos, facilitando la comprensión de estas transformaciones.
+
+\section{Descripción del Código}
+La clase Escena implementa un círculo y dos puntos en un espacio 2D. Se han desarrollado métodos para modificar estos elementos mediante transformaciones geométricas básicas.
+
+\subsection{Definición de la Clase}
+La clase Escena se define con un radio inicial y un color para el círculo, además de la posición de dos puntos que representan ojos.
+
+\begin{alltt}
+class Escena:
+    def _init_(self, radio=5, color='darkblue'):
+        self.radio = radio
+        self.color = color
+        self.puntos = np.array([[-1.5, 2], [1.5, 2]])
+\end{alltt}
+
+\subsection{Método para Dibujar la Escena}
+Este método utiliza Matplotlib para graficar el círculo y los puntos.
+
+\begin{alltt}
+    def dibujar_escena(self):
+        fig, ax = plt.subplots()
+        ax.set_xlim(-self.radio - 3, self.radio + 3)
+        ax.set_ylim(-self.radio - 3, self.radio + 3)
+        circle = patches.Circle((0, 0), self.radio, color=self.color, fill=False)
+        ax.add_patch(circle)
+        ax.scatter(self.puntos[:, 0], self.puntos[:, 1], color='red', s=100)
+        plt.grid(True)
+        plt.show()
+\end{alltt}
+
+\subsection{Transformaciones Geométricas}
+La clase permite modificar la escena mediante tres tipos de transformaciones:
+
+\begin{itemize}
+    \item \textbf{Escalado}: Modifica el tamaño del círculo y la posición de los puntos proporcionalmente.
+    \item \textbf{Traslación}: Mueve los puntos en una dirección determinada.
+    \item \textbf{Rotación}: Gira los puntos alrededor del origen.
+\end{itemize}
+
+\begin{alltt}
+    def escalar(self, factor):
+        self.radio *= factor
+        self.puntos *= factor
+
+    def desplazar(self, dx, dy):
+        self.puntos += np.array([dx, dy])
+
+    def rotar(self, angulo):
+        theta = np.radians(angulo)
+        rot_matrix = np.array([[np.cos(theta), -np.sin(theta)],
+                               [np.sin(theta), np.cos(theta)]])
+        self.puntos = self.puntos @ rot_matrix.T
+\end{alltt}
+
+\section{Resultados y Conclusión}
+El código proporciona una representación visual clara de las transformaciones geométricas aplicadas a la escena. A través de su ejecución, es posible observar los efectos del escalado, la traslación y la rotación en tiempo real. Este tipo de implementaciones resulta útil en aplicaciones de gráficos computacionales, videojuegos y modelado geométrico.
+
+\end{document}
