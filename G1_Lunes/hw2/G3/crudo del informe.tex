@@ -1,0 +1,132 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, graphicx}
+\usepackage{xcolor, listings}
+\usepackage{hyperref}
+
+% Configuración para código fuente
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{lightgray},
+    commentstyle=\color{green},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{gray},
+    stringstyle=\color{red},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+\title{Transformaciones en una Escena 2D}
+\author{[carlos jeronimo, robbyel elias, andrus lopez]}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introducción}
+Este documento presenta una implementación en Python para manejar una escena 2D que incluye un círculo y puntos simulando ojos. Se incluyen funciones para escalar, desplazar y rotar la escena.
+
+\section{Código Fuente}
+A continuación, se muestra el código en Python:
+
+\begin{lstlisting}[language=Python, caption=Código Python para manejar la escena]
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+
+class Escena:
+    def _init_(self, radio=5, color='darkblue'):
+        """
+        Inicializa la escena con un círculo centrado en el origen y dos puntos simulando ojos.
+        """
+        self.radio = radio
+        self.color = color
+        self.puntos = np.array([[-1.5, 2], [1.5, 2]])  # Posiciones de los ojos
+
+    def dibujar_escena(self):
+        """
+        Dibuja la escena con el círculo, los ejes y los puntos.
+        """
+        fig, ax = plt.subplots()
+        ax.set_xlim(-self.radio - 1, self.radio + 1)
+        ax.set_ylim(-self.radio - 1, self.radio + 1)
+
+        # Dibujar ejes cartesianos
+        ax.axhline(0, color='black', linewidth=1)
+        ax.axvline(0, color='black', linewidth=1)
+
+        # Dibujar círculo
+        circle = patches.Circle((0, 0), self.radio, color=self.color)
+        ax.add_patch(circle)
+
+        # Dibujar puntos (ojos)
+        ax.scatter(self.puntos[:, 0], self.puntos[:, 1], color='red', s=100)
+
+        plt.gca().set_aspect('equal', adjustable='datalim')
+        plt.show()
+
+    def escalar(self, factor):
+        """
+        Escala el círculo y los puntos por un factor dado.
+        """
+        self.radio *= factor
+        self.puntos *= factor
+
+    def desplazar(self, dx, dy):
+        """
+        Desplaza los puntos y el centro del círculo.
+        """
+        self.puntos += np.array([dx, dy])
+
+    def producto_interno(self, punto):
+        """
+        Calcula el producto interno entre los puntos y otro punto dado.
+        """
+        return np.dot(self.puntos, punto)
+
+    def calcular_norma(self):
+        """
+        Calcula la norma de los puntos respecto al origen.
+        """
+        return np.linalg.norm(self.puntos, axis=1)
+
+    def rotar(self, angulo):
+        """
+        Rota los puntos un cierto ángulo en grados alrededor del origen.
+        """
+        theta = np.radians(angulo)
+        rot_matrix = np.array([[np.cos(theta), -np.sin(theta)],
+                               [np.sin(theta), np.cos(theta)]])
+        self.puntos = self.puntos @ rot_matrix.T
+
+# Ejemplo de uso
+escena = Escena()
+print("Dibujando escena inicial...")
+escena.dibujar_escena()
+
+print("Escalando la escena por un factor de 1.2...")
+escena.escalar(1.2)
+escena.dibujar_escena()
+
+print("Desplazando la escena en (2, -1)...")
+escena.desplazar(2, -1)
+escena.dibujar_escena()
+
+print("Rotando la escena 30 grados...")
+escena.rotar(30)
+escena.dibujar_escena()
+\end{lstlisting}
+
+\section{Conclusión}
+Este código permite manipular una escena en 2D mediante transformaciones geométricas básicas, lo que facilita su visualización y análisis.
+
+\end{document}
