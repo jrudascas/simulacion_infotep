@@ -1,0 +1,52 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/RectangleArena.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.2039533205546125 -0.007058880277428551 0.9789551650836602 3.209344417708553
+  position 2.5805193042005916 0.1762856749987476 1.133703968854413
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  translation 0 0 -0.2
+  floorSize 3 3
+  floorTileSize 0.5 0.6
+}
+DEF robot Robot {
+  translation -0.0335777 -1.6672e-14 0.030999999999999972
+  rotation 0 1 0 0.017453292519943295
+  children [
+    Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 0.1 0.1 0.1
+      }
+    }
+  ]
+  controller "controller_1"
+  supervisor TRUE
+}
+DEF robot2 Robot {
+  translation 0.0664223 0.23 0.11099999999999999
+  rotation 0 1 0 0.017453292519943295
+  children [
+    Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 0.1 0.1 0.1
+      }
+    }
+  ]
+  name "robot2"
+  controller "controller_1"
+  supervisor TRUE
+}
