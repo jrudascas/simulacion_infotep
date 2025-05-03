@@ -1,0 +1,87 @@
+"""
+Ejemplo  de un controlador de un robot tipo supervisor
+
+Este ejemplo actúa en una simulación sobre un nodo con DEF llamado cajax. Dicho nodo será trasladado y 
+rotado indefinidamente según parámetros de la aplicación. 
+
+Se habilita manipulación por teclado para administrar dichos parámetros
+"""
+
+from controller import Supervisor, Keyboard
+import math
+
+supervisor = Supervisor()
+timestep = int(supervisor.getBasicTimeStep())
+
+keyboard = Keyboard()
+keyboard.enable(timestep)
+
+print("Controlador supervisor iniciado.")
+nombre_objeto = "robot"
+nombre_objeto2 = "robot2"
+
+nodo = supervisor.getFromDef(nombre_objeto)
+nodo2 = supervisor.getFromDef(nombre_objeto2)
+
+if nodo is None:
+    print("❌ No se encontró un nodo con DEF")
+else:
+    posicion = nodo.getField("translation")
+    orientacion = nodo.getField("rotation")
+if nodo2 is None:
+    print("❌ No se encontró un nodo con DEF")
+else:
+    posicion2 = nodo2.getField("translation")
+    orientacion2 = nodo2.getField("rotation")
+
+delta = 0.001
+delta_r = math.pi / 180
+
+nueva_rotacion = [0, 1, 0, math.pi / 24]
+orientacion.setSFRotation(nueva_rotacion)
+
+def calcular_distancia_xyz(p1, p2):
+    x1, y1, z1 = p1
+    x2, y2, z2 = p2
+    
+    distancia = math.sqrt((x2 - x1)**2 + (y2 - y1)2 + (z2 - z1)**2)
+    return distancia
+
+while supervisor.step(timestep) != -1:
+    key = keyboard.getKey()
+    if key != -1:
+        if key == ord('Q'):
+            break
+        
+        if key == Keyboard.UP:
+            print("Moviendo hacia arriba")
+            delta = delta + 0.01
+        if key == Keyboard.DOWN:
+            print("Moviendo hacia abajo")
+            delta = delta - 0.01
+        if key == Keyboard.LEFT:
+            print("Rotacion izquierda")
+            delta_r = delta_r - 0.01           
+        if key == Keyboard.RIGHT:
+            print("Rotacion derecha")
+            delta_r = delta_r + 0.01
+    
+    posicion_actual = posicion.getSFVec3f()
+    posicion_actual2 = posicion2.getSFVec3f()
+    print(posicion_actual)
+    print(posicion_actual2)
+    print(f"posicion actual 1:{posicion_actual} posicion actual 2 : {posicion_actual2}")
+    posicion_actual[2] = posicion_actual[2] + delta
+    
+    orientacion_actual = orientacion.getSFRotation()
+    orientacion_actual[3] = orientacion_actual[3] + delta_r
+    
+    posicion.setSFVec3f(posicion_actual)
+    posicion2.setSFVec3f(posicion_actual2)
+    distancia_con_n2 = calcular_distancia_xyz(posicion_actual, posicion_actual2)
+    centro_tablero = [0.0,0.0,0.0]
+   
+    print(f"distancia_con_n2 {distancia_con_n2}")
+    distancia_con_centro_tablero = calcular_distancia_xyz(posicion_actual, centro_tablero)
+    print(f"distancia_con_centro_tablero {distancia_con_centro_tablero}")
+    orientacion.setSFRotation(orientacion_actual)

@@ -1,0 +1,62 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/RectangleArena.proto"
+
+WorldInfo {
+  info [
+    "Example world demonstrating how to use the VacuumGripper device to simulate a vacuum suction gripper."
+  ]
+  title "Vacuum suction gripper"
+}
+Viewpoint {
+  orientation -0.21582201169581078 -0.23781682460903097 0.9470290477068011 4.634994969043689
+  position -0.9804642533649658 6.815778694388751 4.779645699288461
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+DEF rectangle_arena RectangleArena {
+  translation 0 0 -0.12
+  rotation 0 0 1 4.6928e-06
+  floorSize 2 2
+}
+DEF robot Robot {
+  translation 0.571055 0.13 1.7320941999998511
+  rotation 0 1 0 -2.5045474766118807
+  children [
+    Solid {
+      children [
+        Shape {
+          geometry Cone {
+            bottomRadius 0.05
+            height 0.1
+          }
+        }
+      ]
+    }
+  ]
+  controller "my_controller1"
+  supervisor TRUE
+}
+DEF robot2 Robot {
+  translation 0.671055 0.13 1.2170942000000327
+  rotation 0 1 0 2.766346864411027
+  children [
+    Solid {
+      children [
+        Shape {
+          geometry Cone {
+            bottomRadius 0.05
+            height 0.1
+          }
+        }
+      ]
+    }
+  ]
+  name "robot(1)"
+  controller "my_controller1"
+  supervisor TRUE
+}

@@ -1,0 +1,135 @@
+\documentclass[a4paper, 10pt]{article}
+\hyphenpenalty=8000
+\textwidth=125mm
+\textheight=185mm
+
+\usepackage{graphicx}
+\usepackage{alltt}
+\usepackage{amsmath}
+\usepackage[hidelinks, pdftex]{hyperref}
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{\texttt{https://doi.org/#1}}}
+
+\begin{document}
+
+\begin{center}
+Nonlinear Analysis: Modelling and Control, Vol. vv, No. nn, YYYY\\
+\copyright\ Vilnius University\\[24pt]
+\LARGE
+\textbf{Matrices de Rotación Homogénea en 3D y su Aplicación}\\[6pt]
+\small
+\textbf {Alexdith Ariza, Robbyel Elias, Carlos Jerónimo}\\[6pt]
+Institución de los autores, dirección\\ author@somewhere.host\\[6pt]
+Recibido: fecha\quad/\quad
+Revisado: fecha\quad/\quad
+Publicado online: fecha
+\end{center}
+
+\begin{abstract}
+Este artículo explica el uso de matrices homogéneas en 3D para representar transformaciones geométricas en el espacio tridimensional. En particular, se presentan las matrices de rotación alrededor de los ejes \(x\), \(y\), y \(z\), así como su multiplicación para obtener una matriz de transformación combinada. Además, se aplica esta matriz a un punto homogéneo para obtener las nuevas coordenadas transformadas. Los resultados se ilustran utilizando Python con las bibliotecas SymPy y NumPy.
+\end{abstract}
+
+\textbf{Palabras clave:} Matrices homogéneas, rotación en 3D, Python, SymPy, NumPy
+
+\section{Introducción}
+Las transformaciones geométricas en 3D son fundamentales en la computación gráfica, la robótica y la simulación física. Las matrices homogéneas permiten representar transformaciones como rotaciones, traslaciones y escalados en un solo marco algebraico. Este artículo se centra en las matrices de rotación alrededor de los ejes \(x\), \(y\) y \(z\), y muestra cómo componer estas rotaciones utilizando Python.
+
+\section{Matrices de Rotación en 3D}
+En este artículo, se utilizan las matrices de rotación en 3D para describir cómo un objeto es rotado en el espacio. Cada rotación se define alrededor de uno de los ejes coordenados. Las matrices de rotación alrededor de los ejes \(x\), \(y\) y \(z\) se representan de la siguiente manera:
+
+\subsection{Rotación alrededor del eje \(x\)}
+La rotación alrededor del eje \(x\) se define mediante la matriz:
+
+\[
+H_x = \begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & \cos(\theta) & -\sin(\theta) & 0 \\
+0 & \sin(\theta) & \cos(\theta) & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\]
+
+donde \( \theta \) es el ángulo de rotación sobre el eje \(x\).
+
+\subsection{Rotación alrededor del eje \(y\)}
+La rotación alrededor del eje \(y\) se define como:
+
+\[
+H_y = \begin{bmatrix}
+\cos(\phi) & 0 & \sin(\phi) & 0 \\
+0 & 1 & 0 & 0 \\
+-\sin(\phi) & 0 & \cos(\phi) & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\]
+
+donde \( \phi \) es el ángulo de rotación sobre el eje \(y\).
+
+\subsection{Rotación alrededor del eje \(z\)}
+La rotación alrededor del eje \(z\) se define mediante la matriz:
+
+\[
+H_z = \begin{bmatrix}
+\cos(\psi) & -\sin(\psi) & 0 & 0 \\
+\sin(\psi) & \cos(\psi) & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\]
+
+donde \( \psi \) es el ángulo de rotación sobre el eje \(z\).
+
+\section{Composición de las Rotaciones}
+La transformación total que aplica rotaciones alrededor de los tres ejes \(x\), \(y\), y \(z\) se obtiene multiplicando las matrices \( H_x \), \( H_y \), y \( H_z \). El orden de multiplicación de las matrices es fundamental: primero aplicamos la rotación sobre el eje \(x\), luego sobre el eje \(y\), y finalmente sobre el eje \(z\). La matriz de rotación total \(H\) se obtiene como:
+
+\[
+H = H_z @ H_y @ H_x
+\]
+
+Este proceso de multiplicación de matrices es análogo a las transformaciones geométricas que se describen en el modelo de rotación en 3D.
+
+\section{Aplicación de la Matriz a un Punto Homogéneo}
+Una vez que tenemos la matriz de rotación total \(H\), podemos aplicarla a un punto homogéneo para obtener sus nuevas coordenadas después de la transformación. Si \(P_0\) es el vector de coordenadas homogéneas de un punto, la transformación se calcula como:
+
+\[
+P = H @ P_0
+\]
+
+Por ejemplo, si \( P_0 = \begin{bmatrix} 1 & 0 & 0 & 1 \end{bmatrix}^T \), la nueva posición del punto será:
+
+\[
+P = H @ \begin{bmatrix} 1 \\ 0 \\ 0 \\ 1 \end{bmatrix}
+\]
+
+El código en Python para realizar estas operaciones es el siguiente:
+
+\begin{alltt}
+import numpy as np
+from sympy import *
+init_printing()
+
+# Variables simbólicas
+theta = symbols("theta", real=True)
+phi = symbols("phi", real=True)
+psi = symbols("psi", real=True)
+
+# Matrices de rotación
+H_x = Matrix([[1, 0, 0, 0], [0, cos(phi), -sin(phi), 0], [0, sin(phi), cos(phi), 0], [0, 0, 0, 1]])
+H_y = Matrix([[cos(theta), 0, sin(theta), 0], [0, 1, 0, 0], [-sin(theta), 0, cos(theta), 0], [0, 0, 0, 1]])
+H_z = Matrix([[cos(psi), -sin(psi), 0, 0], [sin(psi), cos(psi), 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]])
+
+# Composición de las rotaciones
+H = H_z @ H_y @ H_x
+
+# Aplicación a un punto homogéneo
+P0_homogeneo = Matrix([1, 0, 0, 1])
+P = H @ P0_homogeneo
+\end{alltt}
+
+\section{Conclusiones}
+Las matrices homogéneas y las rotaciones en 3D son herramientas esenciales en muchos campos de la ciencia y la ingeniería. Este artículo ha demostrado cómo combinar rotaciones sobre los ejes \(x\), \(y\) y \(z\) para obtener una transformación total, y cómo aplicar esta transformación a un punto homogéneo. El código en Python utilizando las bibliotecas SymPy y NumPy proporciona una manera eficiente de realizar estos cálculos simbólicos y numéricos.
+
+\end{document}

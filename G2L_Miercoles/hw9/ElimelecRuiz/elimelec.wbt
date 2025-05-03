@@ -1,0 +1,55 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/apartment_structure/protos/GenericDoorAppearance.proto"
+
+WorldInfo {
+  info [
+    "Example world demonstrating how to use the VacuumGripper device to simulate a vacuum suction gripper."
+  ]
+  title "Vacuum suction gripper"
+}
+Viewpoint {
+  orientation 0.11420836551798023 -0.06848836370032245 -0.9910932313780393 4.478152842192721
+  position 0.9115445957328625 -3.8394027416010554 1.3073703690537553
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 2 2
+}
+Robot {
+  controller "my_controller"
+  supervisor TRUE
+}
+DEF cajax Solid {
+  translation 0 0 0.9079999999999699
+  rotation 0 1 0 1.7016960206944731
+  children [
+    Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 0.1 0.1 0.1
+      }
+    }
+  ]
+}
+DEF caja2 Solid {
+  translation 0.49 0 0.38
+  children [
+    Shape {
+      appearance GenericDoorAppearance {
+      }
+      geometry Cone {
+        bottomRadius 0.05
+        height 0.1
+      }
+    }
+  ]
+  name "solid(1)"
+}
