@@ -48,6 +48,15 @@ NOTA: Estos tutoriales son solo una guía. El manejo de herramientas hace parte 
 - [Curso de Numpy - I](https://www.youtube.com/watch?v=cYm3DBG6KfI)
 - [Curso de Numpy - II](https://www.youtube.com/watch?v=G8t7gMgY5JM&list=PLg9145ptuAij_8zYgMeqwOV8ABwRYLuR3)
 
+## Proyecto final de curso
+
+1. Mesa de billar pool
+2. Sistema solar completo (orbita eliptica y lunas)
+3. Intercepción vial (La bomba en Ciénaga con semásforo)
+4. Brazo robótico (1 grado de libertad) selector de mango
+5. Uso de dron para fumigación en finca de banano
+
+
 ## Lecturas sugeridas
 
 - [Lectura sugerida # 1 - Buenas practicas en el uso de libros de Jupyter Notebooks](https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1007007&type=printable)
