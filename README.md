@@ -33,6 +33,7 @@ User `git push`
 - [Google Codelaboratory](https://www.youtube.com/watch?v=ZwtDVIVB58A)
 - [Python para manipulación de datos - I](https://www.youtube.com/watch?v=ox09Jko1ErM&list=PLGBbVX_WvN7bMwYe7wWV5TZt1a58jTggB)
 - [Python para manipulación de datos - II](https://www.youtube.com/watch?v=nYtNq2D-new&list=PLGBbVX_WvN7as_DnOGcpkSsUyXB1G_wqb)
+- [Brazo robotico de 1 grado de libertad](https://www.youtube.com/watch?v=Tm4AiS0AY3s&t=292s)
 
 
 ```
