@@ -1,4 +1,4 @@
-# INFOTEP - Simulación Computacional - 2025-I Homeworks
+# INFOTEP - Simulación Computacional - 2025-II Homeworks
 
 Los entregables del curso deberán enviarse a traves de este repositorio de GitHub como PR. Se recomienda clonar el proyecto, actualizar su carpeta de grupo y realizar un PR. Evite editar cualquier contenido diferente a la carpeta de su grupo. Todo PR que contenga modificaciones a contenidos no permitidos será descartado y se asumirá como no entregable.
 
@@ -49,13 +49,9 @@ NOTA: Estos tutoriales son solo una guía. El manejo de herramientas hace parte 
 - [Curso de Numpy - I](https://www.youtube.com/watch?v=cYm3DBG6KfI)
 - [Curso de Numpy - II](https://www.youtube.com/watch?v=G8t7gMgY5JM&list=PLg9145ptuAij_8zYgMeqwOV8ABwRYLuR3)
 
-## Proyecto final de curso
+## Proyectos finales del curso
 
-1. Mesa de billar pool
-2. Sistema solar completo (orbita eliptica y lunas)
-3. Intercepción vial (La bomba en Ciénaga con semásforo)
-4. Brazo robótico (1 grado de libertad) selector de mango
-5. Uso de dron para fumigación en finca de banano
+1. 
 
 
 ## Lecturas sugeridas
@@ -71,6 +67,6 @@ https://www.overleaf.com/latex/templates/template-for-nonlinear-analysis-modelli
 
 ## Listado de grupos y calificaciones
 
-[Link grupo y calificaciones](https://docs.google.com/spreadsheets/d/1PbcJJ0qZaZweEbbmH0jha4zP_kSjTY8Fxjwo0W7bCR4/edit?usp=sharing)
+[Link grupo y calificaciones](https://docs.google.com/spreadsheets/d/1StpMf-J5jWkpVMUVqzshctOb2adZm4u0ZjLjLuNYKR8/edit?usp=sharing)
  
 Por favor cualquier duda puede ser remitida al correo [jrudascas@gmail.com](jrudascas@gmail.com).
