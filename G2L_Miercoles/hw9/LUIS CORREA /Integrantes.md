@@ -1,3 +1,0 @@
-# Integrantes
-
-- Luis Correa

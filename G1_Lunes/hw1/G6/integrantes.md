@@ -1,2 +1,0 @@
-alexdith ariza 
-nelson martienez
