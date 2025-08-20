@@ -1,4 +1,4 @@
-# INFOTEP - Simulación Computacional - 2025-II Homeworks
+# UNICARIBE - Simulación Computacional - 2025-II Homeworks
 
 Los entregables del curso deberán enviarse a traves de este repositorio de GitHub como PR. Se recomienda clonar el proyecto, actualizar su carpeta de grupo y realizar un PR. Evite editar cualquier contenido diferente a la carpeta de su grupo. Todo PR que contenga modificaciones a contenidos no permitidos será descartado y se asumirá como no entregable.
 
