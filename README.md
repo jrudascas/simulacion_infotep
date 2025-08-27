@@ -28,6 +28,7 @@ User `git push`
 
 ## Tutoriales de referencia sobre el uso de herramientas
 
+- [Sacarse un 10 sin saber nada: la eduación en la era de ChatGPT](https://youtu.be/agup9snAhUw?si=tO4dMikhha-JXJGS)
 - [Git for Dummis](https://www.youtube.com/watch?v=hwP7WQkmECE)
 - [Git Branchs Manage](https://www.youtube.com/watch?v=gjKKtQVVCZU)
 - [Google Codelaboratory](https://www.youtube.com/watch?v=ZwtDVIVB58A)
