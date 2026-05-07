@@ -1,0 +1,41 @@
+#VRML_SIM R2025a utf8
+
+PROTO Hat [
+  field SFVec3f translation 0 0 0
+  field SFColor color 0 0 0
+]
+{
+  Pose {
+    translation IS translation
+    children [
+
+      # Parte alta
+      Shape {
+        appearance PBRAppearance {
+          baseColor IS color
+        }
+        geometry Cylinder {
+          radius 0.12
+          height 0.15
+        }
+      }
+
+      # Ala del sombrero
+      Pose {
+        translation 0 0 -0.08
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor IS color
+            }
+            geometry Cylinder {
+              radius 0.2
+              height 0.02
+            }
+          }
+        ]
+      }
+
+    ]
+  }
+}
