@@ -4,25 +4,76 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/RectangleArena.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/humans/pedestrian/protos/Pedestrian.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/BakelitePlastic.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/drinks/protos/BeerBottle.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/animals/protos/Horse.proto"
 
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.01641858528259118 0.9960026202396489 -0.08780211007186561 0.3709985395849086
-  position -9.289017816791615 -0.4059419404600404 5.913363490278699
+  orientation 0.055994331702865795 -0.005368504179393945 -0.9984166534969383 3.3324086885887323
+  position 12.309678147007235 -0.6603970614701252 2.602120252347979
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
 }
 RectangleArena {
+  translation 0.289773 0.077648 -2.5175e-07
+  rotation -3.81589e-07 -3.73857e-07 -1 -1.8326053071795858
   floorSize 3 3
 }
+DEF BeerBottle BeerBottle {
+  translation 0.6495165066870263 -0.02805324626757133 0.76
+  rotation -0.11622116219804991 0.8827927087056616 0.4551589556555552 0.5631186588274198
+  mass 0
+}
 DEF pedestrian1 Pedestrian {
-  translation -0.2933345393316454 -0.9139615685832392 1.29
-  rotation 0 0 1 1.1344640137963142
+  translation 0.597753 0.165132 1.26
+  rotation 0 0 1 0.261797822806237
+  shirtColor 0 0 0
+  pantsColor 1 1 1
+  shoesColor 0.666667 0 0
+  skinColor 1 0.666667 0.498039
+  bodySlot [
+    Transform {
+      translation 0.0708308 -0.0249622 -1.06978
+      rotation 0.7071067811865475 0.49681880738854306 0.5031610801970138 1.88832
+      scale 0.01 0.01 0.01
+      children [
+        Shape {
+          appearance BakelitePlastic {
+            textureTransform Appearance {
+              material Material {
+                ambientIntensity 0.5
+                transparency 0.5
+              }
+            }
+          }
+          geometry Mesh {
+            url [
+              "meshes/hat.obj"
+            ]
+            ccw FALSE
+            name "sombrero"
+            materialIndex 1
+          }
+        }
+      ]
+      translationStep 0
+      rotationStep -1
+    }
+  ]
+}
+Pose {
 }
 Robot {
+  translationStep 1
+  rotationStep 0
   controller "my_controller"
   supervisor TRUE
+}
+Horse {
+  translation 0 -0.46 0
+  colorBody 0.333333 0 0
 }
