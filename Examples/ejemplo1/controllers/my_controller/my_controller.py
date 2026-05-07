@@ -69,7 +69,8 @@ def rotar_z(nodo, delta_angulo):
     """
     R_nueva = R_z(Δθ) * R_z(θ) = R_z(θ + Δθ)
     """
-
+    campo_rotacion = nodo.getField("rotation")
+    _, _, _, angulo = campo_rotacion.getSFRotation()
     # Formato axis-angle [0, 0, 1, θ]
     campo_rotacion.setSFRotation([0, 0, 1, angulo + delta_angulo])
 
