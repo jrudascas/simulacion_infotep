@@ -1,0 +1,203 @@
+newmtl Mery_preview_belt01_shaderSG
+illum 4
+Kd 0.13 0.13 0.13
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+newmtl Mery_preview_belt02_shaderSG
+illum 4
+Kd 0.07 0.07 0.07
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.09 0.11 0.14
+Ns 28.77
+newmtl Mery_preview_bracelet_shaderSG
+illum 4
+Kd 0.46 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.99 0.17 0.00
+newmtl Mery_preview_buttom_shaderSG
+illum 4
+Kd 0.16 0.14 0.14
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.51 0.51 0.51
+newmtl Mery_preview_eye02_shaderSG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 0.00 0.00 0.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 98.00
+newmtl Mery_preview_eye_shaderSG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 0.00
+newmtl Mery_preview_hair_shaderSG
+illum 4
+Kd 0.09 0.03 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.23 0.09 0.00
+Ns 0.00
+newmtl Mery_preview_iris_shaderSG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 0.00
+newmtl Mery_preview_lips_shaderSG
+illum 4
+Kd 0.75 0.36 0.36
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl Mery_preview_longPants_shaderSG
+illum 4
+Kd 0.25 0.26 0.16
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.12 0.12 0.12
+Ns 0.00
+newmtl Mery_preview_pants_shaderSG
+illum 4
+Kd 0.16 0.14 0.14
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.07 0.07 0.07
+Ns 1.84
+newmtl Mery_preview_pupile_shaderSG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 0.00
+newmtl Mery_preview_shirt_shaderSG
+illum 4
+Kd 0.16 0.14 0.14
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.24 0.21 0.15
+Ns 0.00
+newmtl Mery_preview_shoerRubber01_shaderSG
+illum 4
+Kd 0.92 0.91 0.88
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl Mery_preview_shoesLace_shaderSG
+illum 4
+Kd 0.88 0.86 0.76
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.08 0.08 0.08
+Ns 0.00
+newmtl Mery_preview_shoesMetal_shaderSG
+illum 4
+Kd 0.88 0.88 0.88
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl Mery_preview_shoes_shaderSG
+illum 4
+Kd 0.17 0.16 0.14
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.12 0.12 0.12
+Ns 1.38
+newmtl Mery_preview_shorts_shaderSG
+illum 4
+Kd 1.00 0.93 0.79
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.11 0.11 0.11
+Ns 0.00
+newmtl Mery_preview_skin_shaderSG
+illum 4
+Kd 1.00 0.79 0.69
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.10 0.13 0.14
+Ns 0.00
+newmtl Mery_preview_skirt_shaderSG
+illum 4
+Kd 0.35 0.33 0.29
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.12 0.12 0.12
+Ns 1.38
+newmtl Mery_preview_sock_shaderSG
+illum 4
+Kd 0.98 0.98 0.98
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.07 0.07 0.07
+Ns 5.98
+newmtl Mery_preview_teeth_shaderSG
+illum 4
+Kd 0.91 0.91 0.91
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.61 0.61 0.61
+newmtl Mery_preview_tongue_shaderSG
+illum 4
+Kd 0.50 0.21 0.21
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.16 0.16 0.16
+Ns 4.60
+newmtl Mery_preview_tshirt_shaderSG
+illum 4
+Kd 0.31 0.08 0.08
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.05 0.04 0.04
+Ns 0.00
+newmtl Mery_shad_cn_facial_controlSG
+illum 4
+Kd 0.00 0.05 0.21
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Mery_shad_cn_facial_control_caseSG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl initialShadingGroup
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl lambert2SG
+illum 4
+Kd 1.00 0.55 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
